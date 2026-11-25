@@ -27,7 +27,7 @@ export function createServer(connectUpstream) {
     }
 
     const server = new Server(
-        { name: 'cryptonisation-ai-tools-mcp', version: VERSION },
+        { name: 'cryptonisation-ai-tools', version: VERSION },
         {
             capabilities: { tools: {} },
             instructions: 'Search and read public crypto AI tool cards only. Access levels are not a safety guarantee. Review the tool code before connecting API keys.',

@@ -1,0 +1,19 @@
+{
+  "name": "cryptonisation-ai-tools",
+  "displayName": "Cryptonisation AI Tools",
+  "version": "1.0.0",
+  "description": "Find crypto AI tools and read public tool cards using the read-only MCP server.",
+  "author": {
+    "name": "Cryptonisation"
+  },
+  "homepage": "https://aitools.cryptonisation.pro/mcp/",
+  "repository": "https://github.com/sashazyl-droid/cryptonisation-ai-tools-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "crypto",
+    "ai-tools",
+    "read-only"
+  ],
+  "logo": "assets/logo.svg"
+}

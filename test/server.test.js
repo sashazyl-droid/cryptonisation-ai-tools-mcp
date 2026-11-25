@@ -32,6 +32,7 @@ async function harness(t, overrides = {}, connect) {
 
 test('only three allowlisted read-only tools and their schemas are advertised', async (t) => {
     const { client } = await harness(t, { listTools: async () => ({ tools: [...definitions, { name: 'admin_delete' }] }) });
+    assert.equal(client.getServerVersion().name, 'cryptonisation-ai-tools');
     const result = await client.listTools();
     assert.deepEqual(result.tools.map((tool) => tool.name), TOOL_NAMES);
     for (const tool of result.tools) {
