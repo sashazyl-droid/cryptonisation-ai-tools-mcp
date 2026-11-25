@@ -1,5 +1,7 @@
 # Cryptonisation AI Tools MCP
 
+[![Glama MCP server](https://glama.ai/mcp/servers/sashazyl-droid/cryptonisation-ai-tools-mcp/badges/score.svg)](https://glama.ai/mcp/servers/sashazyl-droid/cryptonisation-ai-tools-mcp)
+
 A small, read-only **stdio wrapper** for the public [Cryptonisation AI Tools](https://aitools.cryptonisation.pro/) MCP server. It connects local MCP clients to `https://aitools.cryptonisation.pro/mcp` using the official MCP TypeScript SDK.
 
 This repository contains only the transport adapter, tests and connection instructions. The website, Laravel application, database, administrative API, deployment configuration and credentials are **not included**.
@@ -13,6 +15,12 @@ https://aitools.cryptonisation.pro/mcp
 ```
 
 No installation or API key is required. See the [client connection guide](https://aitools.cryptonisation.pro/mcp/) or [Russian guide](https://aitools.cryptonisation.pro/ru/mcp/).
+
+**Cursor remote connection:** put this in `.cursor/mcp.json`:
+
+```json
+{"mcpServers":{"cryptonisation-ai-tools":{"url":"https://aitools.cryptonisation.pro/mcp"}}}
+```
 
 **Local stdio clients:** use this wrapper with Node.js 22 or newer and Git installed. The wrapper requires internet access to the public endpoint.
 
@@ -61,12 +69,13 @@ Example arguments:
     "exchange": ["okx"],
     "max_access": "read",
     "limit": 10,
+    "offset": 0,
     "lang": "en"
   }
 }
 ```
 
-Use `list_filters` for current slugs. Supported languages are `en` and `ru`. `max_access` is an upper bound (`read` → `trade` → `limited` → `withdraw`); unknown higher permissions are excluded by the public service. **Access levels are not a safety guarantee. Review the tool's code before connecting API keys.**
+Use `list_filters` for current slugs, including the `cli` type. Continue result pages with `next_offset` as the next request’s `offset`. Supported languages are `en` and `ru`. `max_access` is an upper bound (`read` в†’ `trade` в†’ `limited` в†’ `withdraw`); unknown higher permissions are excluded by the public service. **Access levels are not a safety guarantee. Review the tool's code before connecting API keys.**
 
 ## Data, errors and privacy
 
@@ -95,12 +104,12 @@ npm run test:live
 
 CI runs syntax checks, offline tests and a dependency audit on Node.js 22 and 24. It does not deploy anything. The dependency lockfile is committed, and there are no package lifecycle scripts.
 
-## По-русски
+## РџРѕ-СЂСѓСЃСЃРєРё
 
-Это публичная обёртка для локальных MCP-клиентов. Она передаёт только поиск, чтение карточки и список фильтров в существующий публичный сервер. Токен не нужен, исходников сайта в репозитории нет. Для поиска на русском укажите `"lang": "ru"`. Клиенты с поддержкой удалённого MCP могут подключиться напрямую к адресу выше, без установки обёртки.
+Р­С‚Рѕ РїСѓР±Р»РёС‡РЅР°СЏ РѕР±С‘СЂС‚РєР° РґР»СЏ Р»РѕРєР°Р»СЊРЅС‹С… MCP-РєР»РёРµРЅС‚РѕРІ. РћРЅР° РїРµСЂРµРґР°С‘С‚ С‚РѕР»СЊРєРѕ РїРѕРёСЃРє, С‡С‚РµРЅРёРµ РєР°СЂС‚РѕС‡РєРё Рё СЃРїРёСЃРѕРє С„РёР»СЊС‚СЂРѕРІ РІ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РїСѓР±Р»РёС‡РЅС‹Р№ СЃРµСЂРІРµСЂ. РўРѕРєРµРЅ РЅРµ РЅСѓР¶РµРЅ, РёСЃС…РѕРґРЅРёРєРѕРІ СЃР°Р№С‚Р° РІ СЂРµРїРѕР·РёС‚РѕСЂРёРё РЅРµС‚. Р”Р»СЏ РїРѕРёСЃРєР° РЅР° СЂСѓСЃСЃРєРѕРј СѓРєР°Р¶РёС‚Рµ `"lang": "ru"`. РљР»РёРµРЅС‚С‹ СЃ РїРѕРґРґРµСЂР¶РєРѕР№ СѓРґР°Р»С‘РЅРЅРѕРіРѕ MCP РјРѕРіСѓС‚ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ РЅР°РїСЂСЏРјСѓСЋ Рє Р°РґСЂРµСЃСѓ РІС‹С€Рµ, Р±РµР· СѓСЃС‚Р°РЅРѕРІРєРё РѕР±С‘СЂС‚РєРё.
 
 ## Support and license
 
-For wrapper bugs, [open an issue](https://github.com/sashazyl-droid/cryptonisation-ai-tools-mcp/issues). For catalog questions, use [Cryptonisation support](https://aitools.cryptonisation.pro/support/). Do not post credentials or private logs in public issues.
+For vulnerabilities, follow [SECURITY.md](SECURITY.md); use a private report, never a public issue. For wrapper bugs, [open an issue](https://github.com/sashazyl-droid/cryptonisation-ai-tools-mcp/issues). For catalog questions, use [Cryptonisation support](https://aitools.cryptonisation.pro/support/). Do not post credentials or private logs in public issues.
 
 The wrapper code is MIT licensed. Public catalog content and third-party tools retain their own terms and licenses; this license does not relicense them.

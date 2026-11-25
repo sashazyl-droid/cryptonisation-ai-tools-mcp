@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "pro.cryptonisation/aitools",
+  "title": "Cryptonisation AI Tools",
+  "description": "Read-only search, public tool cards and filter dictionaries for crypto AI tools.",
+  "version": "1.0.0",
+  "websiteUrl": "https://aitools.cryptonisation.pro/mcp/",
+  "repository": {
+    "url": "https://github.com/sashazyl-droid/cryptonisation-ai-tools-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://aitools.cryptonisation.pro/mcp"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://aitools.cryptonisation.pro/brand/crypto-ai-tools-icon-dark.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ],
+      "theme": "light"
+    },
+    {
+      "src": "https://aitools.cryptonisation.pro/brand/crypto-ai-tools-icon-light.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ],
+      "theme": "dark"
+    }
+  ]
+}
